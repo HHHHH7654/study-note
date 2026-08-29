@@ -150,6 +150,7 @@
 		robofolw公开数据集
 			https://public.robflow.com/object-detection
 			https://universe.roboflow.com/
+拓展
 	深度学习经典检测阶段
 		Two-stage （两阶段）: Faster-rcnn Mask-Rcnn系列
 			优势：速度通常比较慢（5FPS）
@@ -167,4 +168,10 @@
 				TP：正类判定为正类            FP：负类判定为正类
 				FN：正类判定为负类           TN：负类判定为负类
 				![[Pasted image 20260829095800.png]]![[Pasted image 20260829095748.png]]
-				
+		网络架构
+			（全连接层需要固定图片大小）![[Pasted image 20260829102558.png]]
+			对于预测最终结果$（S*S)*(B*5+C)$  5:x,y,w,h,c
+		损失函数：![[Pasted image 20260829141654.png]]
+		NMS：非极大值抑制---取IoU最大的 
+		K-means聚类中的距离：d(box,centroids)=1-IOU(box,centroids)
+	YOLOV2版本舍弃了Dropout，卷积后全部加入了Batch Normalization
